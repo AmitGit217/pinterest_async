@@ -1,6 +1,5 @@
+import Header from "./components/Header"
 import "./styles/main.scss"
 
-
-document.querySelector<HTMLDivElement>('#app')!.innerHTML = ``
-
-
+const app = document.querySelector<HTMLDivElement>("#app")!
+app.appendChild(Header())

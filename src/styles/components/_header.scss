@@ -1,0 +1,46 @@
+@use "../global/mixin" as *;
+
+
+.header {
+    @include flex;
+   
+
+    img {
+        height: 40px;
+        width: 40px;
+    }
+
+    .search {
+        position: relative;
+         
+        input {
+            background-color: #ECECEC;
+            border-radius: 30px;
+            border: none;
+            padding: 5%;
+            text-align: center;
+
+         
+        }
+        &::before {
+                content: "";
+                position: absolute;
+                left: 12px;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 20px;
+                height: 20px;
+                background: url("/search.svg") no-repeat center;
+                background-size: contain;
+        }
+    
+    }
+
+   
+
+    .avatar {
+        background-color: #ECECEC;
+        padding: 9px 12px 9px 12px;
+        border-radius: 50%;
+    }
+}
