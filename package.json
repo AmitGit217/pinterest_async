@@ -14,6 +14,7 @@
     "vite": "^7.3.1"
   },
   "dependencies": {
-    "scss": "^0.2.4"
+    "scss": "^0.2.4",
+    "unsplash-js": "^7.0.20"
   }
 }

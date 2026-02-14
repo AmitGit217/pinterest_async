@@ -1,6 +1,7 @@
-@mixin flex {
+@mixin flex ($dir) {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: $dir;
     gap: 20px
 }
