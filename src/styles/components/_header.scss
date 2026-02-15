@@ -3,10 +3,11 @@
 
 .header {
     @include flex(row);
-  
     width: 100%;
     margin: 15px 0 30px 0;
-   
+    @media screen and (min-width: 768px) {
+        justify-content: space-around;
+    }
 
     img {
         height: 40px;
@@ -16,12 +17,14 @@
     .search {
         position: relative;
          
+         
         input {
             background-color: #ECECEC;
             border-radius: 30px;
             border: none;
             padding: 5%;
             text-align: center;
+          
 
          
         }

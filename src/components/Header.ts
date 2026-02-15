@@ -19,11 +19,13 @@ const Header = () => {
 
     input.addEventListener("keydown", async (e: KeyboardEvent) => {
         if (e.key === "Enter") {
+            let eventValue = (e.target as HTMLInputElement).value
             const data = await unsplash.search.getPhotos({
-                query: (e.target as HTMLInputElement).value,
+                query: eventValue,
             })
             localStorage.setItem("data", JSON.stringify(data))
             window.dispatchEvent(new Event("dataUpdated")); 
+            eventValue = ""
         }
         
     });

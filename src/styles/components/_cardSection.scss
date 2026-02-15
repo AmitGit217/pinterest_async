@@ -8,10 +8,18 @@
         @include flex(column);
         width: 100%;
         list-style: none;
+        @media screen and (min-width: 768px) {
+         flex-direction: row;
+         flex-wrap: wrap;
+      }
 
         li {
             width: 100%;
             @include flex(column);
+            @media screen and (min-width: 768px) {
+            max-width: 340px;
+         }
+
         }
 
         .card {
