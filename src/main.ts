@@ -3,4 +3,4 @@ import Header from "./components/Header"
 import "./styles/main.scss"
 
 const app = document.querySelector<HTMLDivElement>("#app")!
-app.append(Header(),CardSection())
+app.append(Header(),await CardSection())

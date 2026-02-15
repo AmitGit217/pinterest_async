@@ -1,8 +1,5 @@
-import { createApi } from 'unsplash-js';
+import unsplash from "../api"
 
-const unsplash = createApi({
-  accessKey: import.meta.env.VITE_UNSPLASH_KEY
-});
 
 
 const Header = () => {
@@ -19,6 +16,17 @@ const Header = () => {
     input.placeholder = "Buscar"
     input.name = "search"
     searchDiv.appendChild(input)
+
+    input.addEventListener("keydown", async (e: KeyboardEvent) => {
+        if (e.key === "Enter") {
+            const data = await unsplash.search.getPhotos({
+                query: (e.target as HTMLInputElement).value,
+            })
+            localStorage.setItem("data", JSON.stringify(data))
+            window.dispatchEvent(new Event("dataUpdated")); 
+        }
+        
+    });
 
     const avatar = document.createElement("p")
     avatar.classList.add("avatar")
