@@ -11,12 +11,14 @@
 
         li {
             width: 100%;
+            @include flex(column);
         }
 
         .card {
-         width: 100%;
+         max-width: 340px;
          max-height: 368px;
          @include flex(column);
+         align-content: center;
 
          .card__image {
             width: 100%;
@@ -27,6 +29,7 @@
 
          .card__createdAt {
             @include flex(row);
+            gap: 10px;
          }
 
 

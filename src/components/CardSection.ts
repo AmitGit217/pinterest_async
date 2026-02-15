@@ -18,7 +18,7 @@ const CardSection = () => {
                 <p>${r.user.name}</p>
                 <div class="card__createdAt">
                     <a herf=${r.links.download}/>
-                    <img src="public/download.svg" alt=download/>
+                    <img src="download.svg" alt=download/>
                     </a>        
                     <p>${onlyDate}</p>
                 </div>
