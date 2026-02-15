@@ -1,30 +1,12 @@
 import unsplash from "../api";
 import type { ImageResult } from "../interfaces";
+import Card from "./Card";
 
 
 const renderCards = (ul: HTMLUListElement, data: any) => {
   ul.innerHTML = data?.response?.results
     .map((r: ImageResult) => {
-      const onlyDate = r.created_at.split("T")[0];
-      return `
-      <li>
-        <div class="card">
-          <a href="${r.links.html}" target="_blank">
-            <img class="card__image" src="${r.urls.small}" alt="${r.description ?? "image"}"/>
-          </a>
-          <img class="card__profile-image " src="${r.user.profile_image.medium}" alt="${r.user.username}"/>
-          <p class="card__username">${r.user.name}</p>
-          <div class="card__createdAt">
-            <a href="#" 
-               class="download-btn" 
-               data-url="${r.urls.raw}" 
-               data-location="${r.links.html}">
-              <img src="/download.svg" alt="Download"/>
-            </a>
-            <p>${onlyDate}</p>
-          </div>
-        </div>
-      </li>`;
+      return Card(r)
     })
     .join("");
 };

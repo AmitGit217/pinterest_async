@@ -8,6 +8,10 @@ const Header = () => {
 
     const img = document.createElement("img")
     img.src = "/pintrest.svg"
+    img.addEventListener("click", () => {
+        window.location.reload()
+        localStorage.clear()
+    })
 
     const searchDiv = document.createElement("div")
     searchDiv.classList.add("search")
@@ -24,17 +28,14 @@ const Header = () => {
                 query: eventValue,
             })
             localStorage.setItem("data", JSON.stringify(data))
+            localStorage.setItem("searchValue", JSON.stringify(eventValue))
             window.dispatchEvent(new Event("dataUpdated")); 
             eventValue = ""
         }
         
     });
 
-    const avatar = document.createElement("p")
-    avatar.classList.add("avatar")
-    avatar.innerText = "A"
-
-    header.append(img, searchDiv, avatar)
+    header.append(img, searchDiv)
 
     return header
 }
