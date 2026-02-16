@@ -14,16 +14,27 @@ const renderCards = (ul: HTMLUListElement, data: any) => {
 const CardSection = async (): Promise<HTMLElement> => {
   const cardsSection = document.createElement("section");
   cardsSection.classList.add("cardSection");
+  const searchText = document.createElement("p")
+  searchText.innerText = "Busca Algo !"
+  searchText.classList.add("search-text")
+  cardsSection.appendChild(searchText)
 
   const ul = document.createElement("ul");
   cardsSection.appendChild(ul);
 
   const storedData = localStorage.getItem("data");
-  if (storedData) renderCards(ul, JSON.parse(storedData));
+  if (storedData) {
+    searchText.remove()
+    renderCards(ul, JSON.parse(storedData))
+  }
+ 
 
   window.addEventListener("dataUpdated", () => {
     const newData = localStorage.getItem("data");
-    if (newData) renderCards(ul, JSON.parse(newData));
+    if (newData) {
+      searchText.remove()
+      renderCards(ul, JSON.parse(newData));
+    }
   });
 
   ul.addEventListener("click", async (e: MouseEvent) => {

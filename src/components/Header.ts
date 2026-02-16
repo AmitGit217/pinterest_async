@@ -36,6 +36,8 @@ const Header = () => {
         
     });
 
+
+
     header.append(img, searchDiv)
 
     return header
