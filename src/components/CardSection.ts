@@ -15,7 +15,7 @@ const CardSection = async (): Promise<HTMLElement> => {
   const cardsSection = document.createElement("section");
   cardsSection.classList.add("cardSection");
   const searchText = document.createElement("p")
-  searchText.innerText = "Busca Algo !"
+  searchText.innerText = "Busca Algo ! (Ejemplo: Cars)"
   searchText.classList.add("search-text")
   cardsSection.appendChild(searchText)
 
