@@ -21,9 +21,9 @@ const Header = () => {
     input.name = "search"
     searchDiv.appendChild(input)
 
-    input.addEventListener("keydown", async (e: KeyboardEvent) => {
+    input.addEventListener("keydown", async (e) => {
         if (e.key === "Enter") {
-            let eventValue = (e.target as HTMLInputElement).value
+            let eventValue = (e.target).value
             const data = await unsplash.search.getPhotos({
                 query: eventValue,
             })

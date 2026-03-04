@@ -1,17 +1,17 @@
 import unsplash from "../api";
-import type { ImageResult } from "../interfaces";
+
 import Card from "./Card";
 
 
-const renderCards = (ul: HTMLUListElement, data: any) => {
+const renderCards = (ul, data) => {
   ul.innerHTML = data?.response?.results
-    .map((r: ImageResult) => {
+    .map((r) => {
       return Card(r)
     })
     .join("");
 };
 
-const CardSection = async (): Promise<HTMLElement> => {
+const CardSection = async () => {
   const cardsSection = document.createElement("section");
   cardsSection.classList.add("cardSection");
   const searchText = document.createElement("p")
@@ -37,9 +37,9 @@ const CardSection = async (): Promise<HTMLElement> => {
     }
   });
 
-  ul.addEventListener("click", async (e: MouseEvent) => {
-    const target = e.target as HTMLElement;
-    const btn = target.closest<HTMLAnchorElement>(".download-btn");
+  ul.addEventListener("click", async (e) => {
+    const target = e.target ;
+    const btn = target.closest(".download-btn");
     if (!btn) return;
 
     e.preventDefault();

@@ -1,7 +1,6 @@
-import type { ImageResult } from "../interfaces";
 
 
-const Card = (cardData: ImageResult) => {
+const Card = (cardData) => {
     const onlyDate = cardData.created_at.split("T")[0];
     return  `
       <li>
