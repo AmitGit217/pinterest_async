@@ -30,7 +30,6 @@ const Header = () => {
             localStorage.setItem("data", JSON.stringify(data))
             localStorage.setItem("searchValue", JSON.stringify(eventValue))
             window.dispatchEvent(new Event("dataUpdated")); 
-            eventValue = ""
             input.value = ""
         }
         
