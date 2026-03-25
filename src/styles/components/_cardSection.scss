@@ -1,71 +1,77 @@
 @use "../global/mixin" as *;
+@use "../global/variables" as *;
 
 
-.cardSection {
-     @include flex(column);
-     width: 100%;
-    ul {
-        @include flex(column);
-        width: 100%;
-        list-style: none;
-        @media screen and (min-width: 768px) {
-         flex-direction: row;
-         flex-wrap: wrap;
-      }
-
-        li {
-            width: 100%;
-            @include flex(column);
-            @media screen and (min-width: 768px) {
-            max-width: 340px;
-         }
-
-        }
-
-        .card {
-         max-width: 340px;
-         height: 368px;
-         @include flex(column);
-         gap:10px;
-         position: relative;
-
-         .card__image {
-            width: 320px;
-            height: 225px;
-            border-radius: 20px;
-            object-fit: cover
-         }
-
-         .card__createdAt {
-            @include flex(row);
-            gap: 10px;
-         }
-
-         .card__profile-image {
-            position: absolute;
-            top: 55%;
-            border-radius: 50%; 
-            width: 70px;
-            height: 70px;
-            box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.5);
-            border: 6px solid rgb(255, 0, 0);
-            object-fit: cover;
-         
-         }
-
-         .card__username {
-            margin-top: 20px;
-         }
-
-
-        }
-    }
-
+// ── Placeholders ─────────────────────────────────────────
+%full-width-column {
+  @include flex(column);
+  width: 100%;
 }
 
+%card-image-base {
+  object-fit: cover;
+  border-radius: $card-border-radius;
+}
+
+// ── Styles ───────────────────────────────────────────────
+.cardSection {
+  @extend %full-width-column;
+
+  ul {
+    @extend %full-width-column;
+    list-style: none;
+
+    @media screen and (min-width: $breakpoint-tablet) {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+
+    li {
+      @extend %full-width-column;
+
+      @media screen and (min-width: $breakpoint-tablet) {
+        max-width: $card-max-width;
+      }
+    }
+
+    .card {
+      max-width: $card-max-width;
+      height: $card-height;
+      @include flex(column);
+      gap: $card-gap;
+      position: relative;
+
+      &__image {
+        @extend %card-image-base;
+        width: $card-image-width;
+        height: $card-image-height;
+      }
+
+      &__createdAt {
+        @include flex(row);
+        gap: $card-gap;
+      }
+
+      &__profile-image {
+        @extend %card-image-base;
+        position: absolute;
+        top: $profile-top;
+        border-radius: 50%;
+        width: $profile-size;
+        height: $profile-size;
+        box-shadow: $profile-shadow;
+        border: $profile-border;
+      }
+
+      &__username {
+        margin-top: $card-gap * 2;
+      }
+    }
+  }
+}
 
 .search-text {
-      font-size: 22px;
-      font-weight: bold;
-      margin-top: 5%;
-    }
+  font-size: 22px;
+  font-weight: bold;
+  margin-top: 5%;
+}

@@ -1,46 +1,47 @@
 @use "../global/mixin" as *;
+@use "../global/variables" as *;
 
 
+// ── Placeholders ──────────────────────────────────────────
+%icon-base {
+  width: $search-icon-size;
+  height: $search-icon-size;
+}
+
+// ── Styles ────────────────────────────────────────────────
 .header {
-    @include flex(row);
-    width: 100%;
-    margin: 15px 0 30px 0;
-    @media screen and (min-width: 768px) {
-        justify-content: space-around;
+  @include flex(row);
+  width: 100%;
+  margin: $header-margin;
+
+  @media screen and (min-width: $breakpoint-tablet) {
+    justify-content: space-around;
+  }
+
+  img {
+    width: $header-icon-size;
+    height: $header-icon-size;
+  }
+
+  .search {
+    position: relative;
+
+    input {
+      background-color: $input-bg;
+      border-radius: $input-border-radius;
+      border: none;
+      padding: $input-padding;
+      text-align: center;
     }
 
-    img {
-        height: 40px;
-        width: 40px;
+    &::before {
+      @extend %icon-base;
+      content: "";
+      position: absolute;
+      left: $search-icon-left;
+      top: 50%;
+      transform: translateY(-50%);
+      background: url("/search.svg") no-repeat center / contain;
     }
-
-    .search {
-        position: relative;
-         
-         
-        input {
-            background-color: #ECECEC;
-            border-radius: 30px;
-            border: none;
-            padding: 5%;
-            text-align: center;
-          
-
-         
-        }
-        &::before {
-                content: "";
-                position: absolute;
-                left: 12px;
-                top: 50%;
-                transform: translateY(-50%);
-                width: 20px;
-                height: 20px;
-                background: url("/search.svg") no-repeat center;
-                background-size: contain;
-        }
-    
-    }
-
-   
+  }
 }
