@@ -3,8 +3,16 @@ import unsplash from "../api";
 import Card from "./Card";
 
 
-const renderCards = (ul, data) => {
+const renderCards = async (ul, data) => {
   ul.innerHTML = "";
+  const localData = JSON.parse(localStorage.getItem("data"));
+  if (localData) {
+    data = localData;
+  }else {
+    data =  await unsplash.search.getPhotos({
+                query: "software",
+        })
+  }
   data?.response?.results.forEach((r) => {
     ul.appendChild(Card(r));
   });
@@ -13,26 +21,20 @@ const CardSection = async () => {
   const cardsSection = document.createElement("section");
   cardsSection.classList.add("cardSection");
   const searchText = document.createElement("p")
-  searchText.innerText = "Busca Algo ! (Ejemplo: Cars)"
   searchText.classList.add("search-text")
   cardsSection.appendChild(searchText)
 
   const ul = document.createElement("ul");
   cardsSection.appendChild(ul);
 
-  const storedData = localStorage.getItem("data");
-  if (storedData) {
-    searchText.remove()
-    renderCards(ul, JSON.parse(storedData))
-  }
+  const storedData = localStorage.getItem("data")
+  renderCards(ul, JSON.parse(storedData))
  
 
-  window.addEventListener("dataUpdated", () => {
-    const newData = localStorage.getItem("data");
-    if (newData) {
+  window.addEventListener("dataUpdated", async () => {
+     const newData = localStorage.getItem("data");
       searchText.remove()
-      renderCards(ul, JSON.parse(newData));
-    }
+      await renderCards(ul, JSON.parse(newData));
   });
 
   ul.addEventListener("click", async (e) => {
