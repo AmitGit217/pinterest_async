@@ -4,13 +4,11 @@ import Card from "./Card";
 
 
 const renderCards = (ul, data) => {
-  ul.innerHTML = data?.response?.results
-    .map((r) => {
-      return Card(r)
-    })
-    .join("");
+  ul.innerHTML = "";
+  data?.response?.results.forEach((r) => {
+    ul.appendChild(Card(r));
+  });
 };
-
 const CardSection = async () => {
   const cardsSection = document.createElement("section");
   cardsSection.classList.add("cardSection");
