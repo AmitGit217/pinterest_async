@@ -8,9 +8,14 @@ const Header = () => {
 
     const img = document.createElement("img")
     img.src = "/pintrest.svg"
-    img.addEventListener("click", () => {
-        window.location.reload()
-        localStorage.clear()
+    img.addEventListener("click", async () => {
+        const data = await unsplash.search.getPhotos({
+                query: "software",
+        })
+        localStorage.setItem("data", JSON.stringify(data))
+        localStorage.setItem("searchValue", JSON.stringify("software"))
+        window.dispatchEvent(new Event("dataUpdated"));
+        
     })
 
     const searchDiv = document.createElement("div")
