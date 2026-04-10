@@ -3,13 +3,14 @@ import unsplash from "../api";
 import Card from "./Card";
 
 
-const renderCards = async (ul, data) => {
+const renderCards = async (ul) => {
   ul.innerHTML = "";
+  let data;
   const localData = JSON.parse(localStorage.getItem("data"));
   if (localData) {
     data = localData;
   }else {
-    data =  await unsplash.search.getPhotos({
+    data = await unsplash.search.getPhotos({
                 query: "software",
         })
   }
@@ -27,13 +28,11 @@ const CardSection = async () => {
   const ul = document.createElement("ul");
   cardsSection.appendChild(ul);
 
-  const storedData = localStorage.getItem("data")
-  renderCards(ul, JSON.parse(storedData))
+  renderCards(ul)
  
 
   window.addEventListener("dataUpdated", async () => {
-     const newData = localStorage.getItem("data");
-      await renderCards(ul, JSON.parse(newData));
+      await renderCards(ul);
   });
 
   ul.addEventListener("click", async (e) => {
