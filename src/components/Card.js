@@ -3,6 +3,12 @@ const Card = (cardData) => {
 
     const li = document.createElement("li");
     const card = document.createElement("div");
+    const button = document.createElement("button");
+    button.innerHTML = `Visit <br> ❤️ ${cardData.likes}`;
+    button.className = "visit-btn";
+    button.addEventListener("click", () => {
+        window.open(cardData.links.html, "_blank");
+    });
     card.className = "card";
 
     const imageLink = document.createElement("a");
@@ -47,6 +53,7 @@ const Card = (cardData) => {
     card.appendChild(profileImage);
     card.appendChild(username);
     card.appendChild(createdAt);
+    card.appendChild(button);
     li.appendChild(card);
 
     return li;

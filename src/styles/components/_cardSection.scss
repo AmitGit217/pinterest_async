@@ -34,12 +34,35 @@
       }
     }
 
+   .card:hover .visit-btn {
+  opacity: 1;
+  visibility: visible;
+}
+
     .card {
       max-width: $card-max-width;
       height: $card-height;
       @include flex(column);
       gap: $card-gap;
       position: relative;
+
+      .visit-btn {
+        margin-top: auto;
+        padding: 10px;
+        border: none;
+        border-radius: 20px;
+        background-color: #000000;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        position: absolute;
+        bottom: 55%;
+        left: 50%;
+        transform: translateX(-50%);
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease;
+      }
 
       &__image {
         @extend %card-image-base;
