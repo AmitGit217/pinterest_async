@@ -33,7 +33,6 @@ const CardSection = async () => {
 
   window.addEventListener("dataUpdated", async () => {
      const newData = localStorage.getItem("data");
-      searchText.remove()
       await renderCards(ul, JSON.parse(newData));
   });
 
