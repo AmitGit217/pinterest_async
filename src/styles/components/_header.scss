@@ -11,7 +11,8 @@
 // ── Styles ────────────────────────────────────────────────
 .header {
   @include flex(row);
-  width: 100%;
+  gap: 2%;
+  max-width: 100%;
   margin: $header-margin;
 
   @media screen and (min-width: $breakpoint-tablet) {
@@ -19,12 +20,13 @@
   }
 
   img {
-    width: $header-icon-size;
-    height: $header-icon-size;
+    max-width: $header-icon-size;
+    max-height: $header-icon-size;
   }
 
   .search {
     position: relative;
+    width: 100%;
 
     input {
       background-color: $input-bg;
@@ -32,6 +34,7 @@
       border: none;
       padding: $input-padding;
       text-align: center;
+      width: 95%;
     }
 
     &::before {

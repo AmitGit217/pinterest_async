@@ -5,7 +5,7 @@
 // ── Placeholders ─────────────────────────────────────────
 %full-width-column {
   @include flex(column);
-  width: 100%;
+  max-width: 100%;
 }
 
 %card-image-base {
@@ -43,7 +43,7 @@
 
       &__image {
         @extend %card-image-base;
-        width: $card-image-width;
+        max-width: $card-image-width;
         height: $card-image-height;
       }
 
