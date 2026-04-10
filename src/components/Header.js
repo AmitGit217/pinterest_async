@@ -19,6 +19,7 @@ const Header = () => {
     input.type = "text"
     input.placeholder = "Buscar"
     input.name = "search"
+    input.labels = "search"
     searchDiv.appendChild(input)
 
     input.addEventListener("keydown", async (e) => {
